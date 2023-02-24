@@ -19,6 +19,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Quick Multimedia 
 #        mainwindow.ui
 #)
 
+qt_add_resources(QT_RESOURCES sounds.qrc images.qrc)
+
+
 set(bsoncxx_DIR C:/Mongo/mongoCPPCore/install/lib/cmake/bsoncxx-3.7.0)
 set(mongocxx_DIR C:/Mongo/mongoCPPCore/install/lib/cmake/mongocxx-3.7.0)
 
@@ -26,6 +29,7 @@ file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE QMLFILES ${CMAKE_CURRENT_SOURCE_DIR}/*.qml)
 file(GLOB_RECURSE UIFILES ${CMAKE_CURRENT_SOURCE_DIR}/*.ui)
+file(GLOB_RECURSE QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(SoftPhone
@@ -34,7 +38,20 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${SOURCES}
         ${QMLFILES}
         ${UIFILES}
+        ${QT_RESOURCES}
     )
+
+qt_add_qml_module(SoftPhone
+    URI SoftPhone
+    VERSION 1.0
+    QML_FILES main.qml
+#        QML/AnaMenu.qml
+#        PersonelManager/PersonelManager.qml
+)
+
+
+
+
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET SoftPhone APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
@@ -54,9 +71,9 @@ else()
 endif()
 
 
-target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../MSVC2022x64noBoost/include")
+target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/MSVC2022x64noBoost/include")
 
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../MSVC2022x64noBoost/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/MSVC2022x64noBoost/lib")
 
 target_include_directories(SoftPhone PUBLIC "C:/Mongo/mongoCPPCore/install/include")
 target_link_directories(SoftPhone PUBLIC "C:/Mongo/mongoCPPCore/install/lib")
@@ -83,21 +100,21 @@ add_definitions(-DUNICODE=0)
 
 
 
-target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjsip/include")
-target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjlib/include")
-target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjlib-util/include")
-target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjmedia/include")
-target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjnath/include")
+target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjsip/include")
+target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjlib/include")
+target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjlib-util/include")
+target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjmedia/include")
+target_include_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjnath/include")
 
 
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjlib/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjlib-util/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjmedia/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjnath/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjsip/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/pjnath/lib")
-target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../pjproject-2.12/third_party/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjlib/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjlib-util/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjmedia/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjnath/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjsip/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/pjnath/lib")
+target_link_directories(SoftPhone PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../SoftPhoneLib/pjproject-2.12/third_party/lib")
 
 target_link_libraries(SoftPhone PUBLIC libpjproject-x86_64-x64-vc14-Release-Dynamic)
 target_link_libraries(SoftPhone PUBLIC pjlib-util-x86_64-x64-vc14-Release-Dynamic)
