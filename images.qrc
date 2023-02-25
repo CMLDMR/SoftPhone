@@ -6,5 +6,6 @@
         <file>images/about.png</file>
         <file>images/logo_transparent.ico</file>
         <file>images/logo_transparent.png</file>
+        <file>QML/PhoneButton.qml</file>
     </qresource>
 </RCC>
