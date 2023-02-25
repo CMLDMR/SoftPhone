@@ -6,11 +6,12 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:__cplusplus")
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Quick Multimedia Gui)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Quick Multimedia Gui)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Widgets Quick Multimedia Gui)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Quick Multimedia Gui)
 
 #set(PROJECT_SOURCES
 #        main.cpp
@@ -19,7 +20,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Quick Multimedia 
 #        mainwindow.ui
 #)
 
-qt_add_resources(QT_RESOURCES sounds.qrc images.qrc)
+qt_add_resources(QT_RESOURCES sounds.qrc images.qrc qmlResource.qrc)
 
 
 set(bsoncxx_DIR C:/Mongo/mongoCPPCore/install/lib/cmake/bsoncxx-3.7.0)
@@ -45,8 +46,8 @@ qt_add_qml_module(SoftPhone
     URI SoftPhone
     VERSION 1.0
     QML_FILES main.qml
-#        QML/AnaMenu.qml
-#        PersonelManager/PersonelManager.qml
+        QML/PhoneKeyboard.qml
+        QML/PhoneButton.qml
 )
 
 
@@ -81,7 +82,7 @@ target_link_libraries(SoftPhone PRIVATE MongoCore)
 
 
 
-target_link_libraries(SoftPhone PRIVATE Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Multimedia Qt${QT_VERSION_MAJOR}::Gui SerikBLDCore)
+target_link_libraries(SoftPhone PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Multimedia Qt${QT_VERSION_MAJOR}::Gui SerikBLDCore)
 
 
 find_package(mongocxx REQUIRED)
