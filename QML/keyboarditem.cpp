@@ -1,5 +1,7 @@
 #include "keyboarditem.h"
 
+#include <QFile>
+#include <QByteArray>
 
 #include <QDebug>
 
@@ -7,6 +9,31 @@
 KeyBoardItem::KeyBoardItem(QObject *parent)
     :QAbstractListModel{parent}
 {
+
+    QStringList fileList;
+    for( int i = 0 ; i < 10 ; i++ ){
+        fileList.append(QString("Dtmf-%1.wav").arg(i));
+    }
+    fileList.append("Dtmf-pound.wav");
+    fileList.append("Dtmf-star.wav");
+    fileList.append("incoming.wav");
+    fileList.append("incoming.wav");
+    fileList.append("outgoing.wav");
+    fileList.append("ring.wav");
+
+    for( const auto &fileName : fileList ){
+        auto filePath = ":/sounds/"+fileName;
+        QFile file(filePath);
+        if( file.open(QIODevice::ReadOnly) ){
+            auto ar = file.readAll();
+            QFile write(fileName);
+            if( write.open(QIODevice::ReadWrite) ){
+                write.write(ar);
+                write.close();
+            }
+            file.close();
+        }
+    }
 
     beginResetModel();
     mList.push_back("1");
@@ -22,6 +49,22 @@ KeyBoardItem::KeyBoardItem(QObject *parent)
     mList.push_back("0");
     mList.push_back("#");
     endResetModel();
+
+}
+
+void KeyBoardItem::playSound(const QString &value)
+{
+    QString tone = value;
+    if( tone == "*" ){
+        tone = "star";
+    }
+    if( tone == "#" ){
+        tone = "pound";
+    }
+    mPLay.setSource(QUrl::fromLocalFile(QString("Dtmf-%1.wav").arg(tone)));
+    mPLay.setLoopCount(1);
+    mPLay.setVolume(1.00f);
+    mPLay.play();
 
 }
 

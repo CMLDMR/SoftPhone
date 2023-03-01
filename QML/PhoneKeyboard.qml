@@ -36,6 +36,16 @@ import com.softphone.global 1.0
                     delegate: PhoneButton{
                         keyBoardName: keyboardName
 
+                        MouseArea{
+                            anchors.fill: parent
+
+                            onPressed: {
+                                console.log("Lickce " + keyboardName);
+
+                                mKeyboard.playSound(keyboardName);
+                            }
+                        }
+
                     }
                 }
 
