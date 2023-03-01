@@ -20,7 +20,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets Quick Multim
 #        mainwindow.ui
 #)
 
-qt_add_resources(QT_RESOURCES sounds.qrc images.qrc qmlResource.qrc)
+qt_add_resources(RESOURCES sounds.qrc images.qrc qmlResource.qrc)
 
 
 set(bsoncxx_DIR C:/Mongo/mongoCPPCore/install/lib/cmake/bsoncxx-3.7.0)
@@ -33,14 +33,17 @@ file(GLOB_RECURSE UIFILES ${CMAKE_CURRENT_SOURCE_DIR}/*.ui)
 file(GLOB_RECURSE QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+
     qt_add_executable(SoftPhone
-        MANUAL_FINALIZATION
         ${HEADERS}
         ${SOURCES}
         ${QMLFILES}
         ${UIFILES}
-        ${QT_RESOURCES}
+        ${RESOURCES}
     )
+
+#    qt_add_executable(
+#    )
 
 qt_add_qml_module(SoftPhone
     URI SoftPhone

@@ -1,7 +1,5 @@
 import QtQuick 2.15
 
-
-
 Rectangle{
     id: keyboardid
     property string keyBoardName
@@ -11,8 +9,6 @@ Rectangle{
     border.color: "black"
     width: itemWidth
     height: itemHeight
-
-
 
     Text {
         id: textid
@@ -31,7 +27,6 @@ Rectangle{
         onPressed: {
             keyboardid.color = "dimgray"
             textid.color = "black"
-            console.log("onPressedandHold");
         }
 
         onReleased: {
@@ -39,4 +34,6 @@ Rectangle{
             textid.color = "white"
         }
     }
+
+
 }

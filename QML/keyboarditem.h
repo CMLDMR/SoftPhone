@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include <vector>
+#include <QSoundEffect>
 
 class KeyBoardItem : public QAbstractListModel
 {
@@ -15,12 +16,15 @@ public:
 
     };
 
+    Q_INVOKABLE void playSound(const QString &value);
+
 signals:
 
 
 private:
     std::vector<std::string> mList;
 
+    QSoundEffect mPLay;
 
 
     // QAbstractItemModel interface
