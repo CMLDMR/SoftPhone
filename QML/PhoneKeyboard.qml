@@ -27,9 +27,6 @@ import com.softphone.global 1.0
                 columnSpacing: 5
                 rowSpacing: 5
 
-
-
-
                 Repeater{
                     model: mKeyboard
 
