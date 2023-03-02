@@ -6,6 +6,7 @@
 #include <QJSEngine>
 
 #include "QML/keyboarditem.h"
+#include "QML/toolbar.h"
 
 namespace Global {
 
@@ -23,6 +24,7 @@ public:
 
 
     Q_INVOKABLE KeyBoardItem* getKeyBoardModel();
+    Q_INVOKABLE ToolBar* getToolBar();
 
 
 signals:
@@ -30,6 +32,7 @@ signals:
 
 private:
     std::unique_ptr<KeyBoardItem> mKeyboardModel = nullptr;
+    std::unique_ptr<ToolBar> mToolBarItem = nullptr;
 
 
 };

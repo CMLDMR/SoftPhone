@@ -10,11 +10,16 @@ Rectangle{
     width: itemWidth
     height: itemHeight
 
+    signal pressedKeyBoard(string keyValue)
+
+
+
+
     Text {
         id: textid
         text: qsTr(keyBoardName)
         anchors.centerIn: parent
-        font.pointSize: 20
+        font.pointSize: 22
         color: "white"
         font.bold: true
     }
@@ -32,8 +37,12 @@ Rectangle{
         onReleased: {
             keyboardid.color = "green"
             textid.color = "white"
+            pressedKeyBoard(keyBoardName)
         }
     }
+
+
+
 
 
 }

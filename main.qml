@@ -4,25 +4,21 @@ import "QML"
 //import com.belediye.global 1.0
 
 Window {
+    id: mainWindowID
     width: 1280
     height: 780
     visible: true
-    title: qsTr("Serik Belediyesi vv")
+    title: qsTr("Soft Phone")
 
-//    Rectangle{
-//        border.color: "green"
-//        border.width: 1
 
-//        color: "gray"
-//    }
 
 
 
 
 
     PhoneKeyboard{
-        anchors.fill: parent
-        anchors.bottomMargin: 50
+        x: parent.width
+        y: 100
     }
 
 
