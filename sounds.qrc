@@ -15,5 +15,6 @@
         <file>sounds/Dtmf-star.wav</file>
         <file>sounds/incoming.wav</file>
         <file>sounds/outgoing.wav</file>
+        <file>QML/ToolBar.qml</file>
     </qresource>
 </RCC>

@@ -11,6 +11,13 @@ Window {
     title: qsTr("Soft Phone")
 
 
+    ToolBar{
+        x: 0
+        y: 0
+        width: parent.width
+        height: 50
+    }
+
 
 
 
