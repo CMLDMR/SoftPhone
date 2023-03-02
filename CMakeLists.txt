@@ -35,6 +35,7 @@ file(GLOB_RECURSE QT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
     qt_add_executable(SoftPhone
+        MANUAL_FINALIZATION
         ${HEADERS}
         ${SOURCES}
         ${QMLFILES}
@@ -51,6 +52,8 @@ qt_add_qml_module(SoftPhone
     QML_FILES main.qml
         QML/PhoneKeyboard.qml
         QML/PhoneButton.qml
+        QML/ToolBar.qml
+#    QML_FILES QMLFILES
 )
 
 
