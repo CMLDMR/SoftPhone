@@ -61,6 +61,12 @@ Rectangle{
                 text: "Numara Giriniz"
                 font.pointSize: 22
             }
+
+            onTextChanged: {
+                if( numberTextid.text.length >= 11 ){
+                    numberTextid.text = numberTextid.text.substr(0,11)
+                }
+            }
         }
 
 
