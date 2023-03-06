@@ -2,17 +2,38 @@
 #define TOOLBAR_H
 
 #include <QAbstractListModel>
+#include <QQuickItem>
+#include <memory>
 
-class ToolBar : public QAbstractListModel
+
+#include <QDebug>
+
+
+class ToolBarModel;
+
+class ToolBarItem : public QQuickItem
 {
     Q_OBJECT
 public:
-    explicit ToolBar(QObject *parent = nullptr);
+    ToolBarItem();
 
-    // QAbstractItemModel interface
-public:
-    virtual int rowCount(const QModelIndex &parent) const override;
-    virtual QVariant data(const QModelIndex &index, int role) const override;
+    Q_INVOKABLE int counter() const { return 5;}
+
+
+
+Q_SIGNALS:
+    void modelChanged();
+
+private:
+
+
+
+
 };
+
+
+
+
+
 
 #endif // TOOLBAR_H

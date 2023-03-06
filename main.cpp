@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "QML/keyboarditem.h"
 #include "generator.h"
+#include "QML/toolbar.h"
 
 #include <QApplication>
 
@@ -20,7 +21,10 @@ int main(int argc, char *argv[])
 
 
     qmlRegisterType<KeyBoardItem>("com.softphone.keyboard",1,0, "KeyBoard");
+    qmlRegisterType<ToolBarItem>("com.softphone.toolbarItem",1,0, "ToolBarItem");
+
     qmlRegisterSingletonType<Global::Generator>("com.softphone.global", 1 , 0 , "Global" , Global::Generator::createSingletonInstance );
+
 
     const QUrl url(u"qrc:/SoftPhone/main.qml"_qs);
 

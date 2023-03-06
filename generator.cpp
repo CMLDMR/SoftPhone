@@ -29,12 +29,5 @@ KeyBoardItem *Generator::getKeyBoardModel()
     return mKeyboardModel.get();
 }
 
-ToolBar *Generator::getToolBar()
-{
-    if( !mToolBarItem ){
-        mToolBarItem = std::make_unique<ToolBar>();
-    }
-    return mToolBarItem.get();
-}
 
 } // namespace Global
