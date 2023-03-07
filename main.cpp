@@ -4,7 +4,7 @@
 #include "mainwindow.h"
 #include "QML/keyboarditem.h"
 #include "generator.h"
-#include "QML/toolbar.h"
+#include "QML/ToolBar/toolbar.h"
 
 #include <QApplication>
 

@@ -52,7 +52,8 @@ qt_add_qml_module(SoftPhone
     QML_FILES main.qml
         QML/PhoneKeyboard.qml
         QML/PhoneButton.qml
-        QML/ToolBar.qml
+        QML/ToolBar/ToolBar.qml
+        QML/ToolBar/ToolBarMenuButton.qml
 #    QML_FILES QMLFILES
 )
 
