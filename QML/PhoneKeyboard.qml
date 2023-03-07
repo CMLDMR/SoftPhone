@@ -24,13 +24,24 @@ Rectangle{
         width: 50
         height: 50
         color: "red"
+        Text {
+            id: openUPKeyboardTextid
+            text: qsTr("◄")
+            anchors.centerIn: parent
+            font.pointSize: 16
+            font.bold: true
+        }
         MouseArea{
+            cursorShape: Qt.PointingHandCursor
+
             anchors.fill: parent
             onClicked: {
                 if( !opened ){
                     openUPKeyboard.start();
+                    openUPKeyboardTextid.text = "►"
                 }else{
                     closeUPKeyboard.start();
+                    openUPKeyboardTextid.text = "◄"
                 }
                 opened = !opened;
 
@@ -78,7 +89,7 @@ Rectangle{
 
             Text{
                 anchors.centerIn: parent
-                text: "DEL"
+                text: "Sil"
             }
 
             MouseArea{
