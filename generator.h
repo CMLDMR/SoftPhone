@@ -6,7 +6,7 @@
 #include <QJSEngine>
 
 #include "QML/keyboarditem.h"
-#include "QML/toolbar.h"
+#include "QML/ToolBar/toolbar.h"
 
 namespace Global {
 
